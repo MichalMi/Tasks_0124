@@ -5,6 +5,12 @@ public class YTTile {
     String channel;
     String length;
 
+    public YTTile(String title, String channelName, String duration) {
+        this.title = title;
+        this.channel = channelName;
+        this.length = duration;
+    }
+
     public String getTitle() {
         return title;
     }

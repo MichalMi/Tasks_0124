@@ -10,10 +10,19 @@ public class DriverFactory {
     public static synchronized WebDriver getDriver() {
         return tlDriver.get();
     }
-    public WebDriver initDriver(){
+
+    public static WebDriver initDriver() {
         WebDriverManager.getInstance(FirefoxDriver.class).driverVersion("0.30.0").setup();
         WebDriver webDriver = new FirefoxDriver();
         tlDriver.set(webDriver);
         return getDriver();
+    }
+
+    public static void quitDriver() {
+        WebDriver driver = tlDriver.get();
+        if (driver != null) {
+            driver.quit();
+            tlDriver.remove();
+        }
     }
 }
